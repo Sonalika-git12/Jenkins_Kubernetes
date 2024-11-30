@@ -1,4 +1,4 @@
-FROM centos/httpd:latest
+FROM httpd
 
 # Create the /var/www/html directory (if it doesn't exist)
 RUN mkdir -p /var/www/html
