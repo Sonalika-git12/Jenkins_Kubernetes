@@ -7,9 +7,11 @@ RUN mkdir -p /var/www/html
 RUN yum install -y wget unzip
 
 # Retry downloading the ZIP file up to 3 times
-RUN wget --tries=3 --timeout=30 https://www.free-css.com/assets/files/free-css-templates/download/page296/oxer.zip -O /var/www/html/
-WORKDIR /var/ww/html
-RUN yum install -y unzip && unzip photogenic.zip && rm photogenic.zip
+RUN wget --tries=3 --timeout=30 https://www.free-css.com/assets/files/free-css-templates/download/page296/oxer.zip -O /var/www/html/oxer.zip && \
+    # Unzip the downloaded file
+    unzip /var/www/html/oxer.zip -d /var/www/html/ && \
+    # Clean up the ZIP file after extraction
+    rm /var/www/html/oxer.zip
 
 # Expose port 80 for HTTP
 EXPOSE 80
